@@ -2,7 +2,7 @@
 	 "name":				"openlss/lib-array2xml"
 	,"homepage":			"http://openlss.org"
 	,"description":			"Array2XML conversion library credit to lalit.org"
-	,"license":				"Apache-3.0+"
+	,"license":				"Apache-2.0"
 	,"type":				"library"
 	,"keywords": [
 		 "array"
