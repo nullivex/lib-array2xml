@@ -19,6 +19,8 @@
  *	If not, see <http://www.gnu.org/licenses/>.
  */
 namespace LSS;
+use \DOMDocument;
+use \Exception;
 
 /**
  * XML2Array: A class to convert XML to array in PHP

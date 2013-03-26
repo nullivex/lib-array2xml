@@ -19,6 +19,8 @@
  *	If not, see <http://www.gnu.org/licenses/>.
 */
 namespace LSS;
+use \DomDocument;
+use \Exception;
 
 /**
  * Array2XML: A class to convert array in PHP to XML
