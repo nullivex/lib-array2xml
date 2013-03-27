@@ -6,8 +6,6 @@ Array2XML conversion library credit to lalit.org
 Usage
 ----
 ```php
-ld('array2xml');
-
 //create XML
 $xml = Array2XML::createXML('root_node_name', $php_array);
 echo $xml->saveXML();
