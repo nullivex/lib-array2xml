@@ -44,7 +44,8 @@ use \Exception;
 class XML2Array {
 
     private static $xml = null;
-	private static $encoding = 'UTF-8';
+    private static $encoding = 'UTF-8';
+    private static $prefix_attributes = '@';
 
     /**
      * Initialize the root XML node [optional]
@@ -92,7 +93,7 @@ class XML2Array {
 
 		switch ($node->nodeType) {
 			case XML_CDATA_SECTION_NODE:
-				$output['@cdata'] = trim($node->textContent);
+				$output[static::$prefix_attributes.'cdata'] = trim($node->textContent);
 				break;
 
 			case XML_TEXT_NODE:
@@ -142,7 +143,7 @@ class XML2Array {
 					}
 					// if its an leaf node, store the value in @value instead of directly storing it.
 					if(!is_array($output)) {
-						$output = array('@value' => $output);
+						$output = array(static::$prefix_attributes.'value' => $output);
 					}
 					$output['@attributes'] = $a;
 				}
