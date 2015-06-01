@@ -45,7 +45,7 @@ class XML2Array {
 
     private static $xml = null;
     private static $encoding = 'UTF-8';
-    private static $prefix_attributes = '';
+    private static $prefix_attributes = '@';
 
     /**
      * Initialize the root XML node [optional]
