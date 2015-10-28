@@ -137,7 +137,7 @@ class Array2XML {
                 $fragment = $xml->createDocumentFragment();
                 $fragment->appendXML($arr['@xml']);
                 $node->appendChild($fragment);
-                unset($arr['@dom']);
+                unset($arr['@xml']);
                 return $node;
             }
         }
