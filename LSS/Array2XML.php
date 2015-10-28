@@ -56,6 +56,9 @@ use \Exception;
  */
 class Array2XML {
 
+    /**
+     * @var DOMDocument
+     */
     private static $xml = null;
     private static $encoding = 'UTF-8';
 
@@ -126,6 +129,11 @@ class Array2XML {
                 $node->appendChild($xml->createCDATASection(self::bool2str($arr['@cdata'])));
                 unset($arr['@cdata']);    //remove the key from the array once done.
                 //return from recursion, as a note with cdata cannot have child nodes.
+                return $node;
+            }
+            else if (isset($arr['@dom'])) {
+                $node->appendChild($arr['@dom']);
+                unset($arr['@dom']);
                 return $node;
             }
         }
