@@ -49,6 +49,8 @@ use \Exception;
  *          - Reverted to version 0.5
  * Version: 0.8 (02 May 2012)
  *          - Removed htmlspecialchars() before adding to text node or attributes.
+ * Version: 0.11 (28 October 2015)
+ *          - Fixed typos; Added support for plain insertion of XML trough @xml.
  *
  * Usage:
  *       $xml = Array2XML::createXML('root_node_name', $php_array);
