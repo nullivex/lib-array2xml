@@ -53,3 +53,14 @@ More complete references can be found here
 	http://www.lalit.org/lab/convert-xml-to-array-in-php-xml2array/
 	http://www.lalit.org/lab/convert-php-array-to-xml-with-attributes/
 
+## Changelog
+
+### 0.5.0
+* add second parameter to XML2Array::createArray for DOMDocument::load, e.g: LIBXML_NOCDATA
+* change method visibility from private to protected for overloading
+* Merge pull request #5 to add child xml
+* Merge pull request #4 to change method visibility and add second parameter for load.
+
+
+### 0.1.0
+* Initial Release
