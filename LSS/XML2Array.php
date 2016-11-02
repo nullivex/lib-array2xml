@@ -43,9 +43,9 @@ use \Exception;
 
 class XML2Array {
 
-    private static $xml = null;
-    private static $encoding = 'UTF-8';
-    private static $prefix_attributes = '@';
+    protected static $xml = null;
+    protected static $encoding = 'UTF-8';
+    protected static $prefix_attributes = '@';
 
     /**
      * Initialize the root XML node [optional]
@@ -62,13 +62,14 @@ class XML2Array {
     /**
      * Convert an XML to Array
      * @param string $node_name - name of the root node to be converted
+     * @param int - Bitwise OR of the libxml option constants see @link http://php.net/manual/zh/libxml.constants.php
      * @param array $arr - aray to be converterd
      * @return DOMDocument
      */
-    public static function &createArray($input_xml) {
+    public static function &createArray($input_xml, $options = 0) {
         $xml = self::getXMLRoot();
 		if(is_string($input_xml)) {
-			$parsed = $xml->loadXML($input_xml);
+			$parsed = $xml->loadXML($input_xml, $options);
 			if(!$parsed) {
 				throw new Exception('[XML2Array] Error parsing the XML string.');
 			}
@@ -88,7 +89,7 @@ class XML2Array {
      * @param mixed $node - XML as a string or as an object of DOMDocument
      * @return mixed
      */
-    private static function &convert($node) {
+    protected static function &convert($node) {
 		$output = array();
 
 		switch ($node->nodeType) {
@@ -155,7 +156,7 @@ class XML2Array {
     /*
      * Get the root XML node, if there isn't one, create it.
      */
-    private static function getXMLRoot(){
+    protected static function getXMLRoot(){
         if(empty(self::$xml)) {
             self::init();
         }
