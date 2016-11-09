@@ -110,6 +110,10 @@ class XML2Array {
 					if(isset($child->tagName)) {
 						$t = $child->tagName;
 
+                        // avoid fatal error if the content looks like '<html><body>You are being <a href="https://some.url">redirected</a>.</body></html>'
+                        if(isset($output) && !is_array($output)) {
+                            continue;
+                        }
 						// assume more nodes of same kind are coming
 						if(!isset($output[$t])) {
 							$output[$t] = array();
