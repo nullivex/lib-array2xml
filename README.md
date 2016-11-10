@@ -55,6 +55,9 @@ More complete references can be found here
 
 ## Changelog
 
+### 0.5.1
+* Fix fata error when the array passed is empty fixed by pull request #6
+
 ### 0.5.0
 * add second parameter to XML2Array::createArray for DOMDocument::load, e.g: LIBXML_NOCDATA
 * change method visibility from private to protected for overloading
