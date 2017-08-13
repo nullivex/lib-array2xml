@@ -64,7 +64,7 @@ class XML2Array {
      * @param string $node_name - name of the root node to be converted
      * @param int - Bitwise OR of the libxml option constants see @link http://php.net/manual/zh/libxml.constants.php
      * @param array $arr - aray to be converterd
-     * @return DOMDocument
+     * @return array
      */
     public static function &createArray($input_xml, $options = 0) {
         $xml = self::getXMLRoot();
