@@ -133,6 +133,10 @@ class Array2XML {
                 //return from recursion, as a note with cdata cannot have child nodes.
                 return $node;
             }
+            else if (isset($arr['@comment']) && is_string($arr['@comment'])) {
+                $node->appendChild($xml->createComment(self::bool2str($arr['@comment'])));
+                unset($arr['@comment']);
+            }
             else if (isset($arr['@xml'])) {
                 $fragment = $xml->createDocumentFragment();
                 $fragment->appendXML($arr['@xml']);
