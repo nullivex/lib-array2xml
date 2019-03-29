@@ -55,6 +55,9 @@ More complete references can be found here
 
 ## Changelog
 
+### 1.0.0
+* Add ability for callbacks during processing to check status.
+
 ### 0.5.1
 * Fix fata error when the array passed is empty fixed by pull request #6
 
