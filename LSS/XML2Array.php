@@ -64,12 +64,13 @@ class XML2Array {
      * @param string $node_name - name of the root node to be converted
      * @param int - Bitwise OR of the libxml option constants see @link http://php.net/manual/libxml.constants.php
      * @param array $arr - aray to be converterd
+     * @param mixed $callback - callback function
      * @return array
      */
-    public static function &createArray($input_xml, $options = 0) {
+    public static function &createArray($input_xml, $options = 0, $callback = null) {
         $xml = self::getXMLRoot();
 		if(is_string($input_xml)) {
-			$parsed = @$xml->loadXML($input_xml, $options);
+			$parsed = $xml->loadXML($input_xml, $options);
 			if(!$parsed) {
 				throw new Exception('[XML2Array] Error parsing the XML string.');
 			}
@@ -79,7 +80,7 @@ class XML2Array {
 			}
 			$xml = self::$xml = $input_xml;
 		}
-		$array[$xml->documentElement->tagName] = self::convert($xml->documentElement);
+		$array[$xml->documentElement->tagName] = self::convert($xml->documentElement, $callback);
         self::$xml = null;    // clear the xml node in the class for 2nd time use.
         return $array;
     }
@@ -87,9 +88,10 @@ class XML2Array {
     /**
      * Convert an Array to XML
      * @param mixed $node - XML as a string or as an object of DOMDocument
+     * @param mixed $callback - callback function
      * @return mixed
      */
-    protected static function &convert($node) {
+    protected static function &convert($node, $callback = null) {
 		$output = array();
 
 		switch ($node->nodeType) {
@@ -102,9 +104,11 @@ class XML2Array {
 				break;
 
 			case XML_ELEMENT_NODE:
-
 				// for each child node, call the covert function recursively
 				for ($i=0, $m=$node->childNodes->length; $i<$m; $i++) {
+			if ($callback!==null) {
+				$callback($m=$node->childNodes->length, $i);
+			}
 					$child = $node->childNodes->item($i);
 					$v = self::convert($child);
 					if(isset($child->tagName)) {
