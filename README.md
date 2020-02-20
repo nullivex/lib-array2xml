@@ -50,8 +50,8 @@ This will result in the following.
 Reference
 ----
 More complete references can be found here
-	http://www.lalit.org/lab/convert-xml-to-array-in-php-xml2array/
-	http://www.lalit.org/lab/convert-php-array-to-xml-with-attributes/
+    http://www.lalit.org/lab/convert-xml-to-array-in-php-xml2array/
+    http://www.lalit.org/lab/convert-php-array-to-xml-with-attributes/
 
 ## Changelog
 
