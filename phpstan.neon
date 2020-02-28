@@ -1,6 +1,0 @@
-parameters:
-    level: max
-    checkGenericClassInNonGenericObjectType: true
-    checkMissingIterableValueType: false
-    paths:
-        - %currentWorkingDirectory%/LSS/
