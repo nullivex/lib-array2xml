@@ -43,18 +43,29 @@ use Exception;
  */
 class XML2Array
 {
+    /**
+     * @var DOMDocument|null
+     */
     protected static $xml = null;
 
+    /**
+     * @var string
+     */
     protected static $encoding = 'UTF-8';
 
+    /**
+     * @var string
+     */
     protected static $prefix_attributes = '@';
 
     /**
      * Initialize the root XML node [optional]
      *
-     * @param $version
-     * @param $encoding
-     * @param $format_output
+     * @param string $version
+     * @param string $encoding
+     * @param bool   $format_output
+     *
+     * @return void
      */
     public static function init($version = '1.0', $encoding = 'UTF-8', $format_output = true)
     {
@@ -66,12 +77,9 @@ class XML2Array
     /**
      * Convert an XML to Array
      *
-     * @param string $node_name - name of the root node to be converted
-     * @param int - Bitwise OR of the libxml option constants see @link http://php.net/manual/libxml.constants.php
-     * @param array $arr       - aray to be converterd
-     * @param mixed $callback  - callback function
-     * @param mixed $input_xml
-     * @param mixed $options
+     * @param DOMDocument|string $input_xml - name of the root node to be converted
+     * @param int $options - Bitwise OR of the libxml option constants see @link http://php.net/manual/libxml.constants.php
+     * @param callable|null $callback - callback function
      *
      * @return array
      */
@@ -98,7 +106,7 @@ class XML2Array
      * Convert an Array to XML
      *
      * @param mixed $node     - XML as a string or as an object of DOMDocument
-     * @param mixed $callback - callback function
+     * @param callable|null $callback - callback function
      *
      * @return mixed
      */
@@ -177,8 +185,10 @@ class XML2Array
         return $output;
     }
 
-    /*
+    /**
      * Get the root XML node, if there isn't one, create it.
+     *
+     * @return DOMDocument
      */
     protected static function getXMLRoot()
     {

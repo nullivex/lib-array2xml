@@ -20,7 +20,7 @@
  */
 namespace LSS;
 
-use DomDocument;
+use DOMDocument;
 use Exception;
 
 /**
@@ -59,18 +59,23 @@ use Exception;
 class Array2XML
 {
     /**
-     * @var DOMDocument
+     * @var DOMDocument|null
      */
     private static $xml = null;
 
+    /**
+     * @var string
+     */
     private static $encoding = 'UTF-8';
 
     /**
      * Initialize the root XML node [optional]
      *
-     * @param $version
-     * @param $encoding
-     * @param $format_output
+     * @param string $version
+     * @param string $encoding
+     * @param bool   $format_output
+     *
+     * @return void
      */
     public static function init($version = '1.0', $encoding = 'UTF-8', $format_output = true)
     {
@@ -83,7 +88,7 @@ class Array2XML
      * Convert an Array to XML
      *
      * @param string $node_name - name of the root node to be converted
-     * @param array  $arr       - aray to be converterd
+     * @param array  $arr       - array to be converted
      *
      * @return DomDocument
      */
@@ -185,8 +190,10 @@ class Array2XML
         return $node;
     }
 
-    /*
+    /**
      * Get the root XML node, if there isn't one, create it.
+     *
+     * @return DOMDocument
      */
     private static function getXMLRoot()
     {
@@ -197,8 +204,12 @@ class Array2XML
         return self::$xml;
     }
 
-    /*
+    /**
      * Get string representation of boolean value
+     *
+     * @param bool|mixed $v
+     *
+     * @return mixed|string
      */
     private static function bool2str($v)
     {
@@ -208,9 +219,13 @@ class Array2XML
         return $v === false ? 'false' : $v;
     }
 
-    /*
+    /**
      * Check if the tag name or attribute name contains illegal characters
      * Ref: http://www.w3.org/TR/xml/#sec-common-syn
+     *
+     * @param string $tag
+     *
+     * @return bool
      */
     private static function isValidTagName($tag)
     {
