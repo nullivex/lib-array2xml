@@ -157,6 +157,8 @@ class XML2Array {
 					$output[static::$prefix_attributes.'attributes'] = $a;
 				}
 				break;
+			default:
+				$output = '';
 		}
 		return $output;
     }
